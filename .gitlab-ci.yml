@@ -1,8 +1,5 @@
 image: ubuntu:18.04
 
-variables:
-  BIN_NAME: main.out
-
 before_script:
   - apt-get -y update
 
@@ -15,10 +12,13 @@ build:
   stage: build
   script:
     - apt-get -y install gcc g++
-    - g++ -o ${BIN_NAME} main.cpp
+    - apt-get -y install make
+    - ./configure.sh
+    - make
   artifacts:
     paths:
-      - ${BIN_NAME}
+    - bin/hw
+    expire_in: 30 minutes
 
 test:
   stage: test
@@ -34,7 +34,7 @@ pages:
   script:
     - apt-get -y install doxygen
     - apt-get -y install graphviz
-    - doxygen Doxyfile.cfg
+    - doxygen doc/Doxyfile.cfg
     - mv doc/html/ public/
   artifacts:
     paths:
