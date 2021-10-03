@@ -36,6 +36,7 @@ public:
 
 class ACollector
 {
+private:
   std::vector<std::shared_ptr<ICollectable>> _items;
   std::vector<bool> _removed_signs;
   size_t _removed_count = 0;
