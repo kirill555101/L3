@@ -14,6 +14,7 @@ enum MetalType
 
 class Exhibit : public ICollectable
 {
+private:
   std::string _special_name;
 
   MetalType _metal_type;
