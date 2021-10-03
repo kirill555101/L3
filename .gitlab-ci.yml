@@ -1,3 +1,5 @@
+image: ubuntu:18.04
+
 before_script:
   - apt-get -y update
 
